@@ -1,0 +1,22 @@
+export const WORD_PAIRS = [
+  { fidele: "Banane", apostat: "Pomme" },
+  { fidele: "Mer", apostat: "Océan" },
+  { fidele: "Chat", apostat: "Chien" },
+  { fidele: "Livre", apostat: "Magazine" },
+  { fidele: "Café", apostat: "Thé" },
+  { fidele: "Soleil", apostat: "Lune" },
+  { fidele: "Voiture", apostat: "Moto" },
+  { fidele: "Maison", apostat: "Appartement" },
+  { fidele: "Pain", apostat: "Brioche" },
+  { fidele: "École", apostat: "Université" },
+  { fidele: "Montagne", apostat: "Colline" },
+  { fidele: "Rivière", apostat: "Fleuve" },
+  { fidele: "Film", apostat: "Série" },
+  { fidele: "Musique", apostat: "Chanson" },
+  { fidele: "Sport", apostat: "Jeu" },
+  { fidele: "Arbre", apostat: "Arbuste" },
+  { fidele: "Fleur", apostat: "Plante" },
+  { fidele: "Oiseau", apostat: "Poisson" },
+  { fidele: "Portable", apostat: "Téléphone" },
+  { fidele: "Internet", apostat: "Réseau" }
+];
