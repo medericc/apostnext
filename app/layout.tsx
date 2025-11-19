@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { GameProvider } from './components/GameContextProvider';
-
+import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -25,6 +25,7 @@ export default function RootLayout({
             </div>
           </div>
         </GameProvider>
+         <Analytics />
       </body>
     </html>
   );
