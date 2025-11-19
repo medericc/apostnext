@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { GameStore } from '../type/game';
-import { assignRoles, getRandomWordPair, checkGameEnd } from './gameLogic';
+import { assignRoles, getRandomWordPair, checkGameEnd } from './game-logic';
+import { assignRolesToPlayers } from "../utils/assignRoles";
 
 export const useGameStore = create<GameStore>()(
   persist(
@@ -18,25 +19,30 @@ export const useGameStore = create<GameStore>()(
       // Actions
       setPlayers: (players) => set({ players }),
 
-      assignRoles: () => {
-        const state = get();
-        const pair = getRandomWordPair(state.usedPairs);
-        
-        if (!pair) {
-          console.error('Plus de paires disponibles');
-          return;
-        }
+  assignRoles: () => {
+  const state = get();
+  const pair = getRandomWordPair(state.usedPairs);
 
-        const playersWithRoles = assignRoles(state.players, pair);
-        
-        set({
-          players: playersWithRoles,
-          currentPair: pair,
-          usedPairs: [...state.usedPairs, [pair.fidele, pair.apostat]],
-          votes: {},
-          phase: 'playing'
-        });
-      },
+  if (!pair) {
+    console.error('Plus de paires disponibles');
+    return;
+  }
+
+  // 🔥 Copier et mélanger les joueurs
+  const shuffledPlayers = [...state.players].sort(() => Math.random() - 0.5);
+
+  // 🔥 Assigner les rôles sur le tableau mélangé
+  const playersWithRoles = assignRoles(shuffledPlayers, pair);
+
+  set({
+    players: [...playersWithRoles],  // force Zustand persist à enregistrer une nouvelle version
+    currentPair: pair,
+    usedPairs: [...state.usedPairs, [pair.fidele, pair.apostat]],
+    votes: {},
+    phase: 'playing'
+  });
+},
+
 
       addVote: (playerId) => {
         const state = get();

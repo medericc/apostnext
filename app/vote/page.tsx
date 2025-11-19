@@ -51,11 +51,11 @@ export default function VotePage() {
 
   // Redirection automatique si partie terminée
   useEffect(() => {
-    const gameEnded = players.some(p => p.score >= 25) || 
-                     activePlayers.length <= 2;
+    const gameEnded = players.some(p => p.score >= 20);
+
     
     if (gameEnded) {
-      router.push('/results');
+      router.push('/score');
     }
   }, [players, activePlayers.length, router]);
 
@@ -65,7 +65,7 @@ export default function VotePage() {
     );
 
     if (!eliminatedPlayer) {
-      router.push('/results');
+      router.push('/score');
       return null;
     }
 
@@ -105,7 +105,7 @@ export default function VotePage() {
 
             {/* Bouton continuer */}
             <button
-              onClick={() => router.push('/results')}
+              onClick={() => router.push('/score')}
               className={`w-full max-w-xs py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300 ${
                 wasApostat
                   ? 'bg-green-600 hover:bg-green-500 text-white'
@@ -126,12 +126,10 @@ export default function VotePage() {
         <h1 className="font-cinzel text-4xl gold-text mb-4">
           ASSEMBLÉE DES FIDÈLES
         </h1>
-        <p className="text-creme-200 text-lg">
+        <p className="text-yellow-400 text-lg">
           Choisissez qui bannir
         </p>
-        <p className="text-creme-200/60 text-sm mt-2">
-          Mot des Fidèles: <span className="text-yellow-400">{currentPair?.fidele}</span>
-        </p>
+       
       </div>
 
       {/* Liste des joueurs à voter */}
