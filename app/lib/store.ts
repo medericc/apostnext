@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { GameStore } from '../type/game';
 import { assignRoles, getRandomWordPair, checkGameEnd } from './game-logic';
-import { assignRolesToPlayers } from "../utils/assignRoles";
 
 export const useGameStore = create<GameStore>()(
   persist(
@@ -17,31 +16,51 @@ export const useGameStore = create<GameStore>()(
       hasShownRules: false,
 
       // Actions
-      setPlayers: (players) => set({ players }),
-
-  assignRoles: () => {
-  const state = get();
-  const pair = getRandomWordPair(state.usedPairs);
-
-  if (!pair) {
-    console.error('Plus de paires disponibles');
-    return;
+      setPlayers: (players) => {
+  const shuffled = [...players];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-
-  // 🔥 Copier et mélanger les joueurs
-  const shuffledPlayers = [...state.players].sort(() => Math.random() - 0.5);
-
-  // 🔥 Assigner les rôles sur le tableau mélangé
-  const playersWithRoles = assignRoles(shuffledPlayers, pair);
-
-  set({
-    players: [...playersWithRoles],  // force Zustand persist à enregistrer une nouvelle version
-    currentPair: pair,
-    usedPairs: [...state.usedPairs, [pair.fidele, pair.apostat]],
-    votes: {},
-    phase: 'playing'
-  });
+  set({ players: shuffled });
 },
+
+// Dans votre fichier store (useGameStore)
+
+      assignRoles: () => {
+        const state = get();
+        const pair = getRandomWordPair(state.usedPairs);
+
+        if (!pair) {
+          console.error('Plus de paires disponibles');
+          return;
+        }
+
+        // 1. Copier et mélanger les joueurs (ce que vous faites déjà)
+        const shuffledPlayers = [...state.players];
+        for (let i = shuffledPlayers.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledPlayers[i], shuffledPlayers[j]] = [shuffledPlayers[j], shuffledPlayers[i]];
+        }
+        
+        // 2. Assigner les rôles sur le tableau mélangé
+        const playersWithRoles = assignRoles(shuffledPlayers, pair);
+
+        // 3. 🔥 LA CORRECTION : Re-mélanger la liste APRÈS l'assignation !
+        //    Sinon, players[0] est toujours l'apostat sur l'écran de jeu.
+        for (let i = playersWithRoles.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [playersWithRoles[i], playersWithRoles[j]] = [playersWithRoles[j], playersWithRoles[i]];
+        }
+
+        set({
+          players: playersWithRoles, // C'est déjà une nouvelle copie, pas besoin de [... ]
+          currentPair: pair,
+          usedPairs: [...state.usedPairs, [pair.fidele, pair.apostat]],
+          votes: {},
+          phase: 'playing'
+        });
+      },
 
 
       addVote: (playerId) => {

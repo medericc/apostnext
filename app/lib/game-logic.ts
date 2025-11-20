@@ -2,8 +2,8 @@ import { Player } from '../type/game';
 import { WORD_PAIRS } from './pairs';
 
 export function assignRoles(players: Player[], pair: { fidele: string; apostat: string }): Player[] {
-  const shuffled = [...players].sort(() => Math.random() - 0.5);
-  const undercoverCount = players.length >= 6 ? 2 : 1;
+ const shuffled = players; // ils sont déjà mélangés dans le store
+ const undercoverCount = players.length >= 6 ? 2 : 1;
 
   return shuffled.map((player, index) => ({
     ...player,
