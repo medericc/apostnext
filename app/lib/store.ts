@@ -71,31 +71,71 @@ export const useGameStore = create<GameStore>()(
         set({ votes: newVotes });
       },
 
-      eliminatePlayer: (playerId) => {
-        const state = get();
-        const updatedPlayers = state.players.map(p =>
-          p.id === playerId ? { ...p, eliminated: true } : p
-        );
+    eliminatePlayer: (playerId) => {
+  const state = get();
+  
+  // 1. Marquer le joueur comme éliminé
+  const updatedPlayers = state.players.map((p) =>
+    p.id === playerId ? { ...p, eliminated: true } : p
+  );
 
-        const gameResult = checkGameEnd(updatedPlayers);
-        
-        if (gameResult.gameEnded) {
-          const scoredPlayers = updatedPlayers.map(p => ({
-            ...p,
-            score: p.score + (gameResult.winners.includes(p.id) 
-              ? (p.role === 'apostat' ? 2 : 1) 
-              : 0)
-          }));
+  // 2. Vérifier fin de MANCHE
+  const aliveApostats = updatedPlayers.filter(p => p.role === 'apostat' && !p.eliminated);
+  const aliveFideles = updatedPlayers.filter(p => p.role === 'fidele' && !p.eliminated);
 
-          set({ 
-            players: scoredPlayers, 
-            phase: 'results',
-            votes: {}
-          });
-        } else {
-          set({ players: updatedPlayers });
-        }
-      },
+  // FIN DE MANCHE ?
+  const mancheTerminee = aliveApostats.length === 0 || aliveFideles.length === 0;
+  
+  if (mancheTerminee) {
+    // Décider qui gagne la manche
+    const winnerCamp = aliveApostats.length === 0 ? 'fidele' : 'apostat';
+    
+    console.log(`Fin de manche ! ${winnerCamp} gagnent`);
+    
+    // Attribution des points
+    const playersAvecPoints = updatedPlayers.map((p) => ({
+      ...p,
+      score: p.score + (p.role === winnerCamp ? 
+        (winnerCamp === 'apostat' ? 2 : 1) : 0),
+    }));
+
+    // Vérifier si quelqu'un a 25 points (FIN DE PARTIE)
+    const champion = playersAvecPoints.find(p => p.score >= 25);
+    
+    if (champion) {
+      console.log(`${champion.name} a gagné la partie avec ${champion.score} points!`);
+      set({
+        players: playersAvecPoints,
+        phase: 'gameEnd',
+        votes: {},
+      });
+      return;
+    }
+
+    // Sinon, nouvelle manche
+    console.log('Préparation nouvelle manche...');
+    set({
+      players: playersAvecPoints.map(p => ({
+        ...p,
+        eliminated: false,
+        role: null, // Rôles seront réassignés
+      })),
+      currentPair: null,
+      votes: {},
+      phase: 'setup', // Retour au setup pour nouvelle manche
+    });
+    return;
+  }
+
+  // SINON : CONTINUER LA MANCHE ACTUELLE
+  console.log(`Manche continue. Apostats restants: ${aliveApostats.length}, Fidèles restants: ${aliveFideles.length}`);
+  
+  set({
+    players: updatedPlayers,
+    votes: {}, // Réinitialiser votes pour prochain tour
+    // phase reste 'playing' pour continuer à voter
+  });
+},
 
       nextRound: () => {
         const state = get();

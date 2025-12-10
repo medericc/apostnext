@@ -15,8 +15,8 @@ export default function GamePage() {
 
   const handleStartGame = () => {
     assignRoles();
-    markRulesAsShown();
-    router.push('/play');
+  markRulesAsShown();
+  router.push('/play');
   };
 
   const showRulesDialog = () => {

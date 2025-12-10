@@ -12,7 +12,7 @@ export interface GameState {
   usedPairs: string[][];
   currentPair: { fidele: string; apostat: string } | null;
   votes: Record<string, number>;
-  phase: 'setup' | 'playing' | 'voting' | 'results';
+  phase: 'setup' | 'playing' | 'voting' | 'results' | 'gameEnd';
   hasShownRules: boolean;
 }
 
