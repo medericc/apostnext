@@ -8,16 +8,19 @@ import { PlayerList } from '../components/PlayerList';
 
 export default function GamePage() {
   const router = useRouter();
-  const { players, assignRoles, hasShownRules, markRulesAsShown } = useGameStore();
+  const { players, assignRoles, hasShownRules, markRulesAsShown, phase } = useGameStore();
   const [showRules, setShowRules] = useState(!hasShownRules);
 
   const canStartGame = players.length >= 4;
+  const hasExistingScores = players.some(p => p.score > 0); // <-- NOUVEAU
+  const isGameInProgress = phase === 'playing' || hasExistingScores; // <-- NOUVEAU
 
   const handleStartGame = () => {
     assignRoles();
-  markRulesAsShown();
-  router.push('/play');
+    markRulesAsShown();
+    router.push('/play');
   };
+
 
   const showRulesDialog = () => {
     setShowRules(true);
@@ -51,17 +54,39 @@ export default function GamePage() {
           </h2>
           <PlayerList />
           
-          {/* Bouton de démarrage */}
-          {canStartGame && (
-            <div className="mt-8 text-center">
+          {/* Boutons d'action */}
+          <div className="mt-8 text-center space-y-4">
+            {canStartGame && !isGameInProgress && (
               <button
                 onClick={handleStartGame}
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg w-full max-w-xs"
               >
                 🎯 COMMENCER LA PARTIE
               </button>
-            </div>
-          )}
+            )}
+            
+            {isGameInProgress && (
+              <>
+                <button
+                  onClick={handleStartGame}
+                  className="bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-slate-900 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg w-full max-w-xs"
+                >
+                  🔄 CONTINUER LA PARTIE
+                </button>
+                <button
+                  onClick={() => {
+                    // Réinitialiser pour nouvelle partie
+                    useGameStore.getState().resetGame();
+                    assignRoles();
+                    router.push('/play');
+                  }}
+                  className="text-creme-200/70 hover:text-creme-200 text-sm underline transition-colors"
+                >
+                  Recommencer à zéro
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
 

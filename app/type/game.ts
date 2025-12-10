@@ -2,6 +2,7 @@ export interface Player {
   id: string;
   name: string;
   role: 'fidele' | 'apostat' | null;
+  previousRole?: 'fidele' | 'apostat' | null;
   eliminated: boolean;
   score: number;
 }

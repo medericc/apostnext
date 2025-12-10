@@ -97,10 +97,10 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
                   </div>
                   <div className="flex space-x-2 text-sm">
                     <span className={`
-                      ${player.role === 'apostat' ? 'text-red-400' : 'text-green-400'}
-                    `}>
-                      {player.role === 'apostat' ? 'Apostat' : 'Fidèle'}
-                    </span>
+  ${(player.role || player.previousRole) === 'apostat' ? 'text-red-400' : 'text-green-400'}
+`}>
+  {(player.role || player.previousRole) === 'apostat' ? 'Apostat' : 'Fidèle'}
+</span>
                     {player.eliminated && (
                       <span className="text-red-400">⚰️ Éliminé</span>
                     )}

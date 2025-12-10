@@ -84,8 +84,8 @@ export const useGameStore = create<GameStore>()(
   const aliveFideles = updatedPlayers.filter(p => p.role === 'fidele' && !p.eliminated);
 
   // FIN DE MANCHE ?
-  const mancheTerminee = aliveApostats.length === 0 || aliveFideles.length === 0;
-  
+ const mancheTerminee = aliveApostats.length === 0 || aliveFideles.length < 2;
+
   if (mancheTerminee) {
     // Décider qui gagne la manche
     const winnerCamp = aliveApostats.length === 0 ? 'fidele' : 'apostat';
@@ -118,6 +118,7 @@ export const useGameStore = create<GameStore>()(
       players: playersAvecPoints.map(p => ({
         ...p,
         eliminated: false,
+        previousRole: p.role,
         role: null, // Rôles seront réassignés
       })),
       currentPair: null,
