@@ -8,7 +8,7 @@ export default function ScorePage() {
   const router = useRouter();
   const { players, nextRound, resetGame, currentRound, phase } = useGameStore();
 if (!players || players.length === 0) {
-  return <div className="p-8 text-center text-creme-200">Chargement...</div>;
+  return <div className="p-8 text-center text-gray-200">Chargement...</div>;
 }
 
   // Détection fin de partie / fin de manche
@@ -39,7 +39,7 @@ if (!players || players.length === 0) {
           <h1 className="font-cinzel text-5xl gold-text mb-4">
             {isGameEnd || hasChampion ? 'COURONNEMENT' : 'RÉSULTATS'}
           </h1>
-          <p className="text-creme-200 text-lg">
+          <p className="text-gray-200 text-lg">
             Round {currentRound} • {activePlayers.length} joueur{activePlayers.length > 1 ? 's' : ''} actif{activePlayers.length > 1 ? 's' : ''}
           </p>
         </div>
@@ -53,21 +53,21 @@ if (!players || players.length === 0) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="p-4 bg-slate-700/30 rounded-lg text-center">
             <div className="text-2xl gold-text font-bold">{currentRound}</div>
-            <div className="text-creme-200/70 text-sm">Round</div>
+            <div className="text-gray-200/70 text-sm">Round</div>
           </div>
 
           <div className="p-4 bg-slate-700/30 rounded-lg text-center">
             <div className="text-2xl text-green-400 font-bold">
               {players.filter(p => p.role === 'fidele' && !p.eliminated).length}
             </div>
-            <div className="text-creme-200/70 text-sm">Fidèles restants</div>
+            <div className="text-gray-200/70 text-sm">Fidèles restants</div>
           </div>
 
           <div className="p-4 bg-slate-700/30 rounded-lg text-center">
             <div className="text-2xl text-red-400 font-bold">
               {players.filter(p => p.role === 'apostat' && !p.eliminated).length}
             </div>
-            <div className="text-creme-200/70 text-sm">Apostats restants</div>
+            <div className="text-gray-200/70 text-sm">Apostats restants</div>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ if (!players || players.length === 0) {
                 <h3 className="font-cinzel text-2xl gold-text mb-2">
                   👑 Victoire de {winner.name} !
                 </h3>
-                <p className="text-creme-200">
+                <p className="text-gray-200">
                   Félicitations pour cette magnifique performance !
                 </p>
               </div>
@@ -104,7 +104,7 @@ if (!players || players.length === 0) {
 
               <button
                 onClick={handleNewGame}
-                className="text-creme-200/70 hover:text-creme-200 underline transition-colors"
+                className="text-gray-200/70 hover:text-gray-200 underline transition-colors"
               >
                 Nouvelle partie
               </button>
@@ -115,7 +115,7 @@ if (!players || players.length === 0) {
         {/* ====================== MESSAGE DE FIN ====================== */}
         {(isGameEnd || hasChampion) && (
           <div className="text-center mt-8 p-4 bg-slate-800/30 rounded-lg">
-            <p className="text-creme-200/60 text-sm">
+            <p className="text-gray-200/60 text-sm">
               Merci d&apos;avoir joué à L&apos;Apostat !
             </p>
           </div>

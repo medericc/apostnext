@@ -39,7 +39,7 @@ export function PlayerForm() {
             value={playerName}
             onChange={(e) => setPlayerName(e.target.value)}
             placeholder="Nom du joueur..."
-            className="flex-1 px-4 py-3 bg-slate-700/50 border border-yellow-600/30 rounded-lg text-creme-200 placeholder-creme-200/50 focus:outline-none focus:border-yellow-500"
+            className="flex-1 px-4 py-3 bg-slate-700/50 border border-yellow-600/30 rounded-lg text-gray-200 placeholder-gray-200/50 focus:outline-none focus:border-yellow-500"
             maxLength={20}
           />
           <button
@@ -52,7 +52,7 @@ export function PlayerForm() {
         </div>
       </form>
 
-      <div className="text-sm text-creme-200/70 text-center">
+      <div className="text-sm text-gray-200/70 text-center">
         {players.length}/8 joueurs maximum
       </div>
 
@@ -64,7 +64,7 @@ export function PlayerForm() {
               key={player.id}
               className="flex justify-between items-center p-3 bg-slate-700/30 rounded-lg"
             >
-              <span className="text-creme-200">{player.name}</span>
+              <span className="text-gray-200">{player.name}</span>
               <button
                 onClick={() => removePlayer(player.id)}
                 className="text-red-400 hover:text-red-300 text-lg"

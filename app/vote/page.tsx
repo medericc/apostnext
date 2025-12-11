@@ -113,14 +113,14 @@ export default function VotePage() {
             </h2>
 
             <div className="mb-6">
-              <p className="text-creme-200 text-xl mb-2">{eliminatedPlayer.name}</p>
+              <p className="text-gray-200 text-xl mb-2">{eliminatedPlayer.name}</p>
               <p className={`text-2xl font-bold ${wasApostat ? 'text-red-400' : 'text-yellow-400'}`}>
                 était un {wasApostat ? 'APOSTAT' : 'FIDÈLE'}
               </p>
             </div>
 
             <div className="p-4 bg-slate-800/50 rounded-lg mb-6">
-              <p className="text-creme-200">
+              <p className="text-gray-200">
                 {wasApostat 
                   ? '✅ Bien joué ! Les Fidèles ont éliminé un Apostat.'
                   : '❌ Oh non ! Les Fidèles ont éliminé un des leurs.'
@@ -129,7 +129,7 @@ export default function VotePage() {
               
               {/* Afficher le statut de la manche */}
               <div className="mt-4 p-3 bg-slate-700/30 rounded">
-                <p className="text-creme-200/70 text-sm">
+                <p className="text-gray-200/70 text-sm">
                   {mancheTerminee 
                     ? '🎯 Manche terminée !' 
                     : `📊 Apostats restants: ${aliveApo.length} | Fidèles restants: ${aliveFid.length}`
@@ -180,7 +180,7 @@ export default function VotePage() {
         <p className="text-yellow-400 text-lg">
           Choisissez qui bannir
         </p>
-        <div className="mt-2 text-creme-200/70">
+        <div className="mt-2 text-gray-200/70">
           Apostats restants: {players.filter(p => p.role === 'apostat' && !p.eliminated).length} • 
           Fidèles restants: {players.filter(p => p.role === 'fidele' && !p.eliminated).length}
         </div>
@@ -206,7 +206,7 @@ export default function VotePage() {
             py-4 px-12 rounded-xl font-bold text-lg transition-all duration-300
             ${selectedPlayer
               ? 'bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-slate-900 transform hover:scale-105'
-              : 'bg-slate-600 text-creme-200/50 cursor-not-allowed'
+              : 'bg-slate-600 text-gray-200/50 cursor-not-allowed'
             }
           `}
         >
@@ -216,10 +216,10 @@ export default function VotePage() {
 
       <div className="text-center mt-8 max-w-2xl mx-auto">
         <div className="p-4 bg-slate-800/30 rounded-lg">
-          <p className="text-creme-200/70 text-sm">
+          <p className="text-gray-200/70 text-sm">
             💡 Discutez entre vous pour trouver les incohérences dans les indices donnés
           </p>
-          <p className="text-creme-200/50 text-xs mt-2">
+          <p className="text-gray-200/50 text-xs mt-2">
             Une manche continue jusqu&lsquo;à ce qu&lsquo;un camp soit entièrement éliminé
           </p>
         </div>

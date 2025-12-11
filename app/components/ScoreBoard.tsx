@@ -24,11 +24,11 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
             <div className="flex items-center space-x-3">
               <div className={`
                 w-8 h-8 flex items-center justify-center rounded-full font-semibold
-                ${index === 0 ? 'bg-yellow-400 text-slate-900' : 'bg-slate-600 text-creme-200'}
+                ${index === 0 ? 'bg-yellow-400 text-slate-900' : 'bg-slate-600 text-gray-200'}
               `}>
                 {index + 1}
               </div>
-              <span className="text-creme-200 font-medium">{player.name}</span>
+              <span className="text-gray-200 font-medium">{player.name}</span>
               {hasWinner && player.id === winner.id && (
                 <span className="text-yellow-400">👑</span>
               )}
@@ -53,7 +53,7 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
           {hasWinner ? 'COURONNEMENT' : 'ARCHIVES DU ROUND'}
         </h2>
         {hasWinner && (
-          <p className="text-creme-200 text-lg">
+          <p className="text-gray-200 text-lg">
             👑 {winner.name} règne en maître !
           </p>
         )}
@@ -78,9 +78,9 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
                 <div className={`
                   w-12 h-12 flex items-center justify-center rounded-full font-bold text-lg
                   ${index === 0 ? 'bg-yellow-400 text-slate-900' : 
-                    index === 1 ? 'bg-slate-500 text-creme-200' : 
-                    index === 2 ? 'bg-amber-700 text-creme-200' : 
-                    'bg-slate-700 text-creme-200'}
+                    index === 1 ? 'bg-slate-500 text-gray-200' : 
+                    index === 2 ? 'bg-amber-700 text-gray-200' : 
+                    'bg-slate-700 text-gray-200'}
                 `}>
                   {index + 1}
                 </div>
@@ -88,7 +88,7 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
                 {/* Nom et rôle */}
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-creme-200 font-semibold text-lg">
+                    <span className="text-gray-200 font-semibold text-lg">
                       {player.name}
                     </span>
                     {hasWinner && player.id === winner.id && (
@@ -112,7 +112,7 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
               <div className="text-right">
                 <div className={`
                   text-2xl font-bold
-                  ${index === 0 ? 'text-yellow-400' : 'text-creme-200'}
+                  ${index === 0 ? 'text-yellow-400' : 'text-gray-200'}
                 `}>
                   {player.score} pts
                 </div>
@@ -132,7 +132,7 @@ export function ScoreBoard({ players, showCrown = false, compact = false }: Scor
                   style={{ width: `${Math.min(100, (player.score / 25) * 100)}%` }}
                 />
               </div>
-              <div className="text-xs text-creme-200/60 mt-1 text-right">
+              <div className="text-xs text-gray-200/60 mt-1 text-right">
                 {player.score}/25 points
               </div>
             </div>

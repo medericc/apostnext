@@ -19,7 +19,7 @@ export default function Home() {
             L&apos;APOSTAT
           </h1>
           <div className="parchment-bg rounded-2xl p-6 gold-border">
-            <p className="text-creme-200 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-200 text-lg md:text-xl leading-relaxed">
               ⚠️ Un ou deux intrus se cachent parmi vous...
               <br />
               👀 Démasquez-les avant qu&apos;ils ne vous piègent !
@@ -33,7 +33,7 @@ export default function Home() {
         {players.length > 0 && (
           <div className="mb-8 p-4 bg-slate-800/50 rounded-lg gold-border">
             <p className="gold-text font-semibold">Partie en cours</p>
-            <p className="text-creme-200">{players.length} joueurs</p>
+            <p className="text-gray-200">{players.length} joueurs</p>
           </div>
         )}
 
@@ -51,7 +51,7 @@ export default function Home() {
 
           {players.length > 0 && (
             <Link href="/game" className="block w-full max-w-xs mx-auto">
-              <button className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-creme-200 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 border border-yellow-600/50">
+              <button className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-gray-200 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 border border-yellow-600/50">
                 ➕ REPRENDRE LA PARTIE
               </button>
             </Link>
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
 
         {/* Instructions rapides */}
-        <div className="mt-12 text-creme-200/80 text-sm max-w-md mx-auto">
+        <div className="mt-12 text-gray-200/80 text-sm max-w-md mx-auto">
           <p>📱 Conçu pour mobile • 🖥️ Parfait sur grand écran</p>
           <p className="mt-2">Votre progression est sauvegardée automatiquement</p>
         </div>

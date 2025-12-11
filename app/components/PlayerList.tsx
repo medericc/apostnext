@@ -11,8 +11,8 @@ export function PlayerList() {
   if (players.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-creme-200/60">Aucun joueur ajouté</p>
-        <p className="text-sm text-creme-200/40 mt-2">
+        <p className="text-gray-200/60">Aucun joueur ajouté</p>
+        <p className="text-sm text-gray-200/40 mt-2">
           Ajoutez des joueurs pour commencer
         </p>
       </div>
@@ -31,17 +31,17 @@ export function PlayerList() {
             <div className={`
               w-8 h-8 flex items-center justify-center rounded-full font-semibold
               ${index === 0 ? 'bg-yellow-400 text-slate-900' : 
-                index === 1 ? 'bg-slate-500 text-creme-200' : 
-                index === 2 ? 'bg-amber-700 text-creme-200' : 
-                'bg-slate-600 text-creme-200'}
+                index === 1 ? 'bg-slate-500 text-gray-200' : 
+                index === 2 ? 'bg-amber-700 text-gray-200' : 
+                'bg-slate-600 text-gray-200'}
             `}>
               {index + 1}
             </div>
-            <span className="text-creme-200 font-medium">{player.name}</span>
+            <span className="text-gray-200 font-medium">{player.name}</span>
           </div>
           
           <div className="text-right">
-            <div className="text-creme-200/70 text-sm">
+            <div className="text-gray-200/70 text-sm">
               Score: <span className="text-yellow-400 font-bold">{player.score} pts</span>
             </div>
             {player.eliminated && (

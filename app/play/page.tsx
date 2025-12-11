@@ -30,7 +30,7 @@ export default function PlayPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-creme-200">Chargement...</p>
+          <p className="text-gray-200">Chargement...</p>
         </div>
       </div>
     );
@@ -44,7 +44,7 @@ export default function PlayPage() {
           <h1 className="font-cinzel text-4xl gold-text mb-2">
             Révélation des Rôles
           </h1>
-          <p className="text-creme-200 text-lg">
+          <p className="text-gray-200 text-lg">
             Passe le téléphone à {currentPlayer.name}
           </p>
           <div className="mt-4 flex justify-center space-x-2">
@@ -72,14 +72,14 @@ export default function PlayPage() {
             {!showWord ? (
               <div className="p-12 parchment-bg rounded-2xl gold-border hover:scale-105 transition-transform">
                 <div className="text-6xl mb-6">🎴</div>
-                <p className="text-creme-200 text-xl mb-4">Touche pour révéler ta carte</p>
-                <p className="text-creme-200/60 text-sm">
+                <p className="text-gray-200 text-xl mb-4">Touche pour révéler ta carte</p>
+                <p className="text-gray-200/60 text-sm">
                   {currentPlayer.name}, regarde ton mot sans le montrer aux autres
                 </p>
               </div>
             ) : (
               <div className="p-8 parchment-bg rounded-2xl gold-border">
-                <p className="text-creme-200/70 text-lg mb-4">TON MOT SACRÉ</p>
+                <p className="text-gray-200/70 text-lg mb-4">TON MOT SACRÉ</p>
                 <p className="text-4xl font-bold gold-text mb-4">
                   {currentPlayer.role === 'apostat' ? currentPair.apostat : currentPair.fidele}
                 </p>
@@ -87,7 +87,7 @@ export default function PlayPage() {
                   <p className="text-red-400 text-lg font-semibold">(Apostat)</p>
                 )}
                 <div className="mt-6 p-4 bg-slate-800/50 rounded-lg">
-                  <p className="text-creme-200/60 text-sm">
+                  <p className="text-gray-200/60 text-sm">
                     {currentPlayer.role === 'apostat' 
                       ? "Fais deviner ce mot sans te faire repérer !"
                       : "Les autres Fidèles ont le même mot que toi"

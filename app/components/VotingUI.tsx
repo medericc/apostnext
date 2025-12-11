@@ -30,7 +30,7 @@ export function VotingCard({
     >
       {/* Nom du joueur */}
       <div className="flex items-center justify-between mb-2">
-        <span className="text-creme-200 font-semibold text-lg">{player.name}</span>
+        <span className="text-gray-200 font-semibold text-lg">{player.name}</span>
         {player.eliminated && (
           <span className="text-red-400 text-sm bg-red-400/10 px-2 py-1 rounded">Éliminé</span>
         )}
@@ -38,14 +38,14 @@ export function VotingCard({
 
       {/* Score et votes */}
       <div className="flex justify-between items-center text-sm">
-        <span className="text-creme-200/70">
+        <span className="text-gray-200/70">
           Score: <span className="text-yellow-400">{player.score}</span>
         </span>
         
         {votes > 0 && (
           <div className="flex items-center space-x-1">
             <span className="text-yellow-400 font-bold">{votes}</span>
-            <span className="text-creme-200/70">vote{votes > 1 ? 's' : ''}</span>
+            <span className="text-gray-200/70">vote{votes > 1 ? 's' : ''}</span>
           </div>
         )}
       </div>
@@ -56,7 +56,7 @@ export function VotingCard({
           className={`w-full mt-3 py-2 px-4 rounded-lg font-semibold transition-colors ${
             isSelected
               ? 'bg-yellow-500 text-slate-900'
-              : 'bg-slate-600 text-creme-200 hover:bg-slate-500'
+              : 'bg-slate-600 text-gray-200 hover:bg-slate-500'
           }`}
         >
           {isSelected ? '✓ VOTÉ' : 'VOTER'}
