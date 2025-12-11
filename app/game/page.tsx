@@ -33,7 +33,7 @@ export default function GamePage() {
         <h1 className="font-cinzel text-4xl md:text-5xl gold-text mb-4">
           Préparation
         </h1>
-        <p className="text-creme-200 text-lg">
+        <p className="text-gray-100 text-lg">
           {players.length} joueur{players.length > 1 ? 's' : ''} inscrit{players.length > 1 ? 's' : ''}
         </p>
       </div>
@@ -80,7 +80,7 @@ export default function GamePage() {
                     assignRoles();
                     router.push('/game');
                   }}
-                  className="text-creme-200/70 hover:text-creme-200 text-sm underline transition-colors"
+                  className="text-gray-100/70 hover:text-gray-100 text-sm underline transition-colors"
                 >
                   Recommencer à zéro
                 </button>
@@ -94,7 +94,7 @@ export default function GamePage() {
       <div className="text-center mt-8">
         <button
           onClick={showRulesDialog}
-          className="bg-slate-700/50 hover:bg-slate-600/50 text-creme-200 py-3 px-6 rounded-lg border border-yellow-600/30 transition-colors"
+          className="bg-slate-700/50 hover:bg-slate-600/50 text-gray-100 py-3 px-6 rounded-lg border border-yellow-600/30 transition-colors"
         >
           📖 Voir les Règles
         </button>
@@ -111,7 +111,7 @@ export default function GamePage() {
               <div className="w-20 h-1 bg-yellow-600 mx-auto"></div>
             </div>
 
-            <div className="space-y-4 text-creme-200">
+            <div className="space-y-4 text-gray-100">
               <div className="p-4 bg-slate-700/30 rounded-lg">
                 <h3 className="font-cinzel text-xl gold-text mb-2">🎯 Objectif</h3>
                 <p>Les <strong>Fidèles</strong> doivent éliminer les <strong>Apostats</strong>.</p>
