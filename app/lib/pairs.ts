@@ -30,7 +30,9 @@ export const WORD_PAIRS = [
  { fidele: "Médiation", apostat: "Intercession" },
 { fidele: "Gnose", apostat: "Serpent" },
   { fidele: "Marthe", apostat: "Lazare" },
-
+{ fidele: "Kaballe", apostat: "Gnose" },
+{ fidele: "Connaissance", apostat: "Démiurge" },
+  { fidele: "Esoterisme", apostat: "Maçonnerie" },
 
 
  { fidele: "Eucharistie", apostat: "Cène" },
