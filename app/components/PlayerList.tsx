@@ -48,11 +48,11 @@ export function PlayerList() {
               <div className="text-red-400 text-xs">Éliminé</div>
             )}
             {/* Optionnel : afficher le rôle si disponible */}
-            {player.role && (
+            {/* {player.role && (
               <div className={`text-xs ${player.role === 'apostat' ? 'text-red-400' : 'text-green-400'}`}>
                 {player.role === 'apostat' ? 'Apostat' : 'Fidèle'}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       ))}
