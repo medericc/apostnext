@@ -33,7 +33,10 @@ export const WORD_PAIRS = [
 { fidele: "Kaballe", apostat: "Gnose" },
 { fidele: "Connaissance", apostat: "Démiurge" },
   { fidele: "Esoterisme", apostat: "Maçonnerie" },
+ { fidele: "Trinité", apostat: "Modalisme" },
 
+ { fidele: "Annonciation", apostat: "Visitation" },
+{ fidele: "Chandeleur", apostat: "Pélerinage" },
 
  { fidele: "Eucharistie", apostat: "Cène" },
  { fidele: "Vierge", apostat: "Mère" },
