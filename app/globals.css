@@ -1,5 +1,14 @@
+/* Tailwind 4 syntax */
 @import "tailwindcss";
 
+/* Police Cinzel */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Variables colorimétriques */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,8 +28,32 @@
   }
 }
 
+/* Style body */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Effet parchemin */
+.parchment-bg {
+  background-image: 
+    radial-gradient(circle at 100% 150%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 0% 200%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
+}
+
+/* Bordure dorée */
+.gold-border {
+  border: 2px solid #D4AF37;
+}
+
+/* Texte doré */
+.gold-text {
+  color: #D4AF37;
+}
+
+/* Fond crème */
+.creme-bg {
+  background-color: #FDF6E3;
 }
