@@ -1,5 +1,5 @@
 'use client';
-
+export const dynamic = "force-dynamic";
 import { useRouter } from 'next/navigation';
 import { useGameStore } from '../lib/store';
 import { ScoreBoard } from '../components/ScoreBoard';
@@ -7,6 +7,9 @@ import { ScoreBoard } from '../components/ScoreBoard';
 export default function ScorePage() {
   const router = useRouter();
   const { players, nextRound, resetGame, currentRound, phase } = useGameStore();
+if (!players || players.length === 0) {
+  return <div className="p-8 text-center text-creme-200">Chargement...</div>;
+}
 
   // Détection fin de partie / fin de manche
   const isGameEnd = phase === 'gameEnd';
