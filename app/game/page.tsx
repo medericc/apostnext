@@ -73,7 +73,7 @@ export default function GamePage() {
                 >
                   🔄 CONTINUER LA PARTIE
                 </button>
-                <button
+                {/* <button
                   onClick={() => {
                     // Réinitialiser pour nouvelle partie
                     useGameStore.getState().resetGame();
@@ -83,7 +83,7 @@ export default function GamePage() {
                   className="text-creme-200/70 hover:text-creme-200 text-sm underline transition-colors"
                 >
                   Recommencer à zéro
-                </button>
+                </button> */}
               </>
             )}
           </div>
