@@ -16,6 +16,9 @@ export const WORD_PAIRS = [
   { fidele: "Pierre", apostat: "André" },
   { fidele: "Jean", apostat: "Jacques" },
   { fidele: "Thomas", apostat: "Philippe" },
+{ fidele: "Protoévangile", apostat: "Évangile" },
+{ fidele: "Massorétique", apostat: "Septante" },
+{ fidele: "Vigneron", apostat: "Babylone" },
 
 { fidele: "Homoousios", apostat: "Procession" },
   { fidele: "Hypostase", apostat: "Nature" },
